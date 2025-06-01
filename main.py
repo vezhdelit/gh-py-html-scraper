@@ -23,7 +23,7 @@ try:
     
     payload = {
         "source_url": target_url,
-        "scraped_content": scraped_html
+        "scraped_html": scraped_html
     }
     print(f"Sending results to backend: {backend_webhook_url}")
     response = curl_requests.post(backend_webhook_url, json=payload)
