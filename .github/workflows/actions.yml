@@ -26,4 +26,8 @@ jobs:
           pip install -r requirements.txt
           
       - name: Execute py script
+        # Pass the workflow input 'url' as an environment variable named GITHUB_INPUT_URL
+        env:
+          GITHUB_INPUT_URL: ${{ github.event.inputs.url }}
         run: python main.py
+
