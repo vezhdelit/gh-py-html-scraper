@@ -6,6 +6,10 @@ on:
       url:
         description: 'URL to scrape'
         required: true
+      webhook_url:
+        description: 'Webhook URL to send results'
+        required: true
+        default: 'https://backend.vezhdelit.com/webhook/scraped-html'
 
 jobs:
   build:
@@ -29,5 +33,6 @@ jobs:
         # Pass the workflow input 'url' as an environment variable named GITHUB_INPUT_URL
         env:
           GITHUB_INPUT_URL: ${{ github.event.inputs.url }}
+          GITHUB_INPUT_WEBHOOK_URL: ${{ github.event.inputs.webhook_url }}
         run: python main.py
 
