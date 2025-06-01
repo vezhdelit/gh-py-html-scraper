@@ -1,6 +1,11 @@
 name: Run web scraper
 
-on: [workflow_dispatch]
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: 'URL to scrape'
+        required: true
 
 jobs:
   build:
