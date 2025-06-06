@@ -21,7 +21,7 @@ if not backend_webhook_url:
 
 try:
     with SB(uc=True, test=True) as sb:
-        sb.activate_cdp_mode(target_url)
+        sb.open(target_url)
         scraped_html = sb.get_page_source()
         print(scraped_html[:1000])
 
