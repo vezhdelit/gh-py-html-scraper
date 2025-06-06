@@ -1,4 +1,4 @@
-name: Run web scraper
+name: Run sb.py script
 
 on:
   workflow_dispatch:
