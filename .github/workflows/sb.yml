@@ -51,4 +51,5 @@ jobs:
           if [ -n "${{ github.event.inputs.proxy }}" ]; then
             PROXY_ARG="--proxy=${{ github.event.inputs.proxy }}"
           fi
+          echo "DEBUG: PROXY_ARG is ->$PROXY_ARG<-"
           python sb.py --debug $PROXY_ARG

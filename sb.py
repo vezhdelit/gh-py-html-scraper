@@ -3,9 +3,7 @@ from seleniumbase import SB
 from curl_cffi import requests as curl_requests
 
 target_url = os.getenv('GITHUB_INPUT_URL')
-backend_webhook_url = os.getenv('GITHUB_INPUT_WEBHOOK_URL') 
-# target_url = 'https://allegro.cz/produkt/curver-odpadkovy-kos-flip-bin-25-l-sedy-acd73538-d924-414a-b9fe-408bc76d1ea9?offerId=16851578557'
-# backend_webhook_url = 'https://nextjs-puppeteer-webscraper.vercel.app/api/webhook/scraped-html'
+backend_webhook_url = os.getenv('GITHUB_INPUT_WEBHOOK_URL')
 
 if not target_url:
     print("Error: URL not provided. Please provide a URL via the workflow input.")
