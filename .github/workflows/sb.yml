@@ -24,10 +24,14 @@ jobs:
         with:
           python-version: '3.12'
           
-      - name: Install python packages
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
+          pip install --upgrade pip
+          pip install --upgrade wheel
           pip install -r requirements.txt
+          pip install --upgrade pyautogui
+          pip install --upgrade python-xlib
 
       - name: Install Chrome
         run: |
