@@ -32,14 +32,6 @@ jobs:
       - name: Install Chrome
         run: |
           sudo apt install google-chrome-stable
-      
-      - name: Check the console scripts interface
-        run: |
-          seleniumbase
-
-      - name: Install chromedriver
-        run: |
-          seleniumbase install chromedriver
 
       - name: Execute py script --debug
         # Pass the workflow input 'url' as an environment variable named GITHUB_INPUT_URL
