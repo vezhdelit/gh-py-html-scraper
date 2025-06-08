@@ -2,12 +2,10 @@ import os
 from seleniumbase import SB
 from curl_cffi import requests as curl_requests
 
-# Get the URL from the environment variable
-# The input 'url' from the workflow will be available as GITHUB_INPUT_URL
-target_url = os.getenv('GITHUB_INPUT_URL')
-backend_webhook_url = os.getenv('GITHUB_INPUT_WEBHOOK_URL') 
-# target_url = 'https://rozetka.com.ua/ua/aleana_4225kmd/p20800690/?gad_source=1&gad_campaignid=22401226961&gbraid=0AAAAACclEFtwuv7Tk1IDBJ3V4tnpAAIQc&gclid=CjwKCAjw_pDBBhBMEiwAmY02NioVT6n5mRrTscDwzeOXXP3UuIoIY3ezFV7jRxhvXkoOulAYfBqGVBoCSkUQAvD_BwE'
-# backend_webhook_url = 'https://nextjs-puppeteer-webscraper.vercel.app/api/webhook/scraped-html'
+# target_url = os.getenv('GITHUB_INPUT_URL')
+# backend_webhook_url = os.getenv('GITHUB_INPUT_WEBHOOK_URL') 
+target_url = 'https://gitlab.com/users/sign_in'
+backend_webhook_url = 'https://nextjs-puppeteer-webscraper.vercel.app/api/webhook/scraped-html'
 
 if not target_url:
     print("Error: URL not provided. Please provide a URL via the workflow input.")
@@ -20,8 +18,10 @@ if not backend_webhook_url:
     exit(1) # Exit if no webhook URL is provided
 
 try:
-    with SB(uc=True, test=True) as sb:
-        sb.open(target_url)
+    with SB(uc=True, test=True, headless=True) as sb:
+        # sb.open(target_url)
+        sb.activate_cdp_mode(target_url)
+        sb.sleep(2)
         scraped_html = sb.get_page_source()
         print(scraped_html[:1000])
 
