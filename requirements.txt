@@ -1,8 +1,8 @@
 curl_cffi==0.11.1
 seleniumbase>=4.37.6
-# nodriver
+nodriver
 pyvirtualdisplay
-# pdbp
-# tabcompleter
-# sbvirtualdisplay
+pdbp
+tabcompleter
+sbvirtualdisplay
 
