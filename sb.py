@@ -4,7 +4,7 @@ from curl_cffi import requests as curl_requests
 
 target_url = os.getenv('GITHUB_INPUT_URL')
 backend_webhook_url = os.getenv('GITHUB_INPUT_WEBHOOK_URL') 
-# target_url = 'https://gitlab.com/users/sign_in'
+# target_url = 'https://allegro.cz/produkt/curver-odpadkovy-kos-flip-bin-25-l-sedy-acd73538-d924-414a-b9fe-408bc76d1ea9?offerId=16851578557'
 # backend_webhook_url = 'https://nextjs-puppeteer-webscraper.vercel.app/api/webhook/scraped-html'
 
 if not target_url:
@@ -23,7 +23,10 @@ try:
         sb.activate_cdp_mode(target_url)
         sb.uc_gui_click_captcha()
         sb.sleep(2)
+
         sb.uc_gui_handle_captcha()
+        sb.sleep(2)
+        
         scraped_html = sb.get_page_source()
         print(scraped_html[:1000])
 

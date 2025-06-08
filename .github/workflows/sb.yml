@@ -10,6 +10,10 @@ on:
         description: 'Webhook URL to send results'
         required: true
         default: 'https://backend.vezhdelit.com/api/webhook/scraped-html'
+      proxy:
+        description: 'Proxy to use for scraping. Format: user:password@host:port or host:port'
+        required: false
+        default: ''
 
 jobs:
   build:
@@ -42,5 +46,9 @@ jobs:
         env:
           GITHUB_INPUT_URL: ${{ github.event.inputs.url }}
           GITHUB_INPUT_WEBHOOK_URL: ${{ github.event.inputs.webhook_url }}
-        run: python sb.py --debug
-
+        run: |
+          PROXY_ARG=""
+          if [ -n "${{ github.event.inputs.proxy }}" ]; then
+            PROXY_ARG="--proxy=${{ github.event.inputs.proxy }}"
+          fi
+          python sb.py --debug $PROXY_ARG
